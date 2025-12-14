@@ -23,23 +23,57 @@
     <meta name="twitter:image" content="https://bylinkofficial.shopee.vercel.app/asset/shopee.jpg">
 
     <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .dots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #EE5D30;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+
         .home-page {
             background: url('asset/shopee.jpg') no-repeat center center;
             background-size: cover;
             height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 20px;
-        }
-
-        .title {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            display: none;
         }
 
         #btnku {
@@ -58,13 +92,6 @@
             background: #BA441F;
         }
 
-        .tips {
-            color: white;
-            font-size: 18px;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
         .admin-access {
             position: fixed;
             bottom: 10px;
@@ -80,6 +107,14 @@
     </style>
 </head>
 <body>
+    <div id="loading" class="loading">
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
     <div class="home-page" id="homePage">
         <button id="btnku" type="button" onclick="window.location.href='login.html'">KONFIRMASI SEKARANG</button>
     </div>
@@ -99,6 +134,12 @@
             if (urlParams.get('admin') === 'true') {
                 document.getElementById('adminLink').style.display = 'block';
             }
+
+            // Show loading for 3 seconds, then show home page
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('homePage').style.display = 'flex';
+            }, 3000);
         };
     </script>
 </body>
